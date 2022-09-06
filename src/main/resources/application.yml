@@ -1,0 +1,33 @@
+server:
+  port: 80
+spring:
+  datasource:
+    username: root
+    password: jy010711
+    url: jdbc:mysql://localhost:3306/security_demo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    host: localhost
+    port: 6379
+    password: jy010711
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8 # \u6700\u5927\u7A7A\u95F2\u8FDE\u63A5\u6570
+        min-idle: 0
+        max-wait: 1000
+
+mybatis-plus:
+  configuration:
+    #\u5728\u6620\u5C04\u5B9E\u4F53\u6216\u8005\u5C5E\u6027\u65F6\uFF0C\u5C06\u6570\u636E\u5E93\u4E2D\u8868\u540D\u548C\u5B57\u6BB5\u540D\u4E2D\u7684\u4E0B\u5212\u7EBF\u53BB\u6389\uFF0C\u6309\u7167\u9A7C\u5CF0\u547D\u540D\u6CD5\u6620\u5C04
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # \u903B\u8F91\u5220\u9664\u5B57\u6BB5\u540D
+      logic-delete-field: isDeleted
+      # \u903B\u8F91\u5220\u9664\u5B57\u9762\u503C\uFF1A\u672A\u5220\u9664\u4E3A0
+      logic-not-delete-value: 0
+      # \u903B\u8F91\u5220\u9664\u5B57\u9762\u503C\uFF1A\u5220\u9664\u4E3A1
+      logic-delete-value: 1
